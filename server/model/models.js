@@ -1,5 +1,7 @@
-import { DataTypes } from "sequelize";
-import sequelize from "./db_handler.js";
+// import { DataTypes } from "sequelize";
+const DataTypes = require("sequelize");
+// import sequelize from "./db_handler.js";
+const sequelize = require("./db_handler");
 
 const Course = sequelize.define("Course", {
   course_id: {
@@ -223,4 +225,12 @@ Mark.belongsTo(Course, {
   targetKey: "course_id",
 });
 
-export { Course, Feedback, Mark, User, Student, Parent, LoginCredentials };
+module.exports = {
+  Course,
+  Feedback,
+  Mark,
+  User,
+  Student,
+  Parent,
+  LoginCredentials,
+};
