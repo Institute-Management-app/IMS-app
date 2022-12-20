@@ -1,28 +1,55 @@
-import sequelize from "./db_handler.js";
 import { DataTypes } from "sequelize";
+import sequelize from "./db_handler.js";
 
-const Login = sequelize.define("Login", {
-  id: {
+const Course = sequelize.define("Course", {
+  course_id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
   },
-
-  email: {
+  course_name: {
     type: DataTypes.STRING(50),
     allowNull: false,
-    unique: true,
   },
-
-  password: {
-    type: DataTypes.STRING(150),
-    allowNull: false,
-    defaultValue: "1234",
-  },
-
-  role: {
+  branch: {
     type: DataTypes.STRING(10),
     allowNull: false,
+  },
+  semester: {
+    type: DataTypes.STRING(1),
+    allowNull: false,
+  },
+  fees: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+});
+
+const User = sequelize.define("User", {
+  user_id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+  },
+  name: {
+    type: DataTypes.STRING(20),
+    allowNull: false,
+  },
+  dob: {
+    type: DataTypes.STRING(10),
+    allowNull: false,
+  },
+  phone: {
+    type: DataTypes.STRING(10),
+    allowNull: false,
+  },
+  address: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+  },
+  relation: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
   },
 });
 
@@ -32,77 +59,22 @@ const Student = sequelize.define("Student", {
     primaryKey: true,
     autoIncrement: true,
   },
-
-  firstName: {
-    type: DataTypes.STRING(50),
+  branch: {
+    type: DataTypes.STRING(10),
     allowNull: false,
   },
-
-  lastName: {
-    type: DataTypes.STRING(50),
+  semester: {
+    type: DataTypes.STRING(2),
     allowNull: false,
   },
-
-  email: {
-    type: DataTypes.STRING(50),
-    allowNull: true,
-  },
-
-  phone: {
-    type: DataTypes.STRING(20),
-    allowNull: false,
-  },
-
-  dob: {
-    type: DataTypes.DATEONLY,
-    allowNull: true,
-  },
-
-  gender: {
-    type: DataTypes.STRING(50),
-    allowNull: false,
-  },
-
-  bloodGroup: {
-    type: DataTypes.STRING(50),
-    allowNull: false,
-  },
-
-  address: {
-    type: DataTypes.STRING(250),
-    allowNull: true,
-  },
-
-  class_12: {
+  user_id: {
     type: DataTypes.INTEGER,
-    allowNull: false,
-  },
-
-  class_10: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-  },
-
-  entranceScore: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-  },
-
-  course: {
-    type: DataTypes.STRING(50),
-    allowNull: true,
-  },
-
-  loginId: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
     references: {
-      model: Login,
-      key: "id",
+      model: User,
+      key: "user_id",
     },
   },
 });
-
 const Parent = sequelize.define("Parent", {
   id: {
     type: DataTypes.INTEGER,
@@ -110,151 +82,145 @@ const Parent = sequelize.define("Parent", {
     autoIncrement: true,
   },
 
-  fatherName: {
-    type: DataTypes.STRING(50),
-    allowNull: false,
-  },
-
-  motherName: {
-    type: DataTypes.STRING(50),
-    allowNull: false,
-  },
-
-  email: {
-    type: DataTypes.STRING(50),
-    allowNull: true,
-  },
-
-  phone: {
+  occupation: {
     type: DataTypes.STRING(20),
     allowNull: false,
   },
-
-  fatherOccupation: {
-    type: DataTypes.STRING(50),
+  relationship: {
+    type: DataTypes.STRING(10),
     allowNull: false,
   },
-
-  motherOccupation: {
-    type: DataTypes.STRING(50),
-    allowNull: false,
-  },
-
-  address: {
-    type: DataTypes.STRING(250),
-    allowNull: true,
-  },
-
-  loginId: {
+  user_id: {
     type: DataTypes.INTEGER,
-    allowNull: false,
     references: {
-      model: Login,
-      key: "id",
-    },
-  },
-
-  studentId: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    references: {
-      model: Student,
-      key: "id",
+      model: User,
+      key: "user_id",
     },
   },
 });
-
-// course models
-const Course = sequelize.define("Course", {
+const LoginCredentials = sequelize.define("LoginCredentials", {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
   },
-
-  courseName: {
-    type: DataTypes.STRING(50),
+  email: {
+    type: DataTypes.STRING(40),
+    allowNull: false,
+    unique: true,
+  },
+  password: {
+    type: DataTypes.TEXT,
     allowNull: false,
   },
-
-  courseDuration: {
-    type: DataTypes.INTEGER,
+  role: {
+    type: DataTypes.STRING(20),
     allowNull: false,
   },
-
-  fee: {
+  user_id: {
     type: DataTypes.INTEGER,
-    allowNull: false,
+    references: {
+      model: User,
+      key: "user_id",
+    },
   },
 });
-
-// subject model
-const Subject = sequelize.define("Subject", {
-  id: {
+const Feedback = sequelize.define("Feedback", {
+  feedback_id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
   },
-
-  subjectName: {
-    type: DataTypes.STRING(50),
-    allowNull: false,
-  },
-
-  semester: {
+  user_id: {
     type: DataTypes.INTEGER,
-    allowNull: false,
-  },
-
-  courseId: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
     references: {
-      model: Course,
-      key: "id",
+      model: User,
+      key: "user_id",
     },
+  },
+  content: {
+    type: DataTypes.TEXT,
+    allowNull: false,
   },
 });
 
-// mark model
 const Mark = sequelize.define("Mark", {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
   },
-
   mark: {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-
-  studentId: {
+  user_id: {
     type: DataTypes.INTEGER,
-    allowNull: false,
     references: {
-      model: Student,
-      key: "id",
+      model: User,
+      key: "user_id",
     },
   },
-
-  subjectId: {
+  course_id: {
     type: DataTypes.INTEGER,
-    allowNull: false,
     references: {
-      model: Subject,
-      key: "id",
+      model: Course,
+      key: "course_id",
     },
   },
 });
-// association of student and mark
-Student.hasOne(Mark, {
-  foreignKey: "studentId",
-  sourceKey: "id",
+
+User.hasOne(Student, {
+  foreignKey: "user_id",
+  sourceKey: "user_id",
 });
-Mark.belongsTo(Student, {
-  foreignKey: "studentId",
-  targetKey: "id",
+Student.belongsTo(User, {
+  foreignKey: "user_id",
+  targetKey: "user_id",
 });
 
-export { Login, Student, Parent, Course, Subject, Mark };
+User.hasOne(Parent, {
+  foreignKey: "user_id",
+  sourceKey: "user_id",
+});
+Parent.belongsTo(User, {
+  foreignKey: "user_id",
+  targetKey: "user_id",
+});
+User.hasOne(LoginCredentials, {
+  foreignKey: "user_id",
+  sourceKey: "user_id",
+});
+LoginCredentials.belongsTo(User, {
+  foreignKey: "user_id",
+  targetKey: "user_id",
+});
+
+User.hasMany(Feedback, {
+  foreignKey: "user_id",
+  sourceKey: "user_id",
+});
+Feedback.belongsTo(User, {
+  foreignKey: "user_id",
+  targetKey: "user_id",
+});
+
+User.hasMany(Mark, {
+  foreignKey: "user_id",
+  sourceKey: "user_id",
+});
+Mark.belongsTo(User, {
+  foreignKey: "user_id",
+  targetKey: "user_id",
+});
+
+Course.hasMany(Mark, {
+  foreignKey: "course_id",
+  sourceKey: "course_id",
+});
+Mark.belongsTo(Course, {
+  foreignKey: "course_id",
+  targetKey: "course_id",
+});
+
+export { Course, Feedback, Mark, User, Student, Parent, LoginCredentials };
