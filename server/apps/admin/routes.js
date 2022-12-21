@@ -6,7 +6,7 @@ const studentProfile = require("./controllers/studentProfileController");
 const express = require("express");
 const router = express.Router();
 
-router.post("/student/create", admin.registerUser);
+router.post("/user/create", admin.registerUser);
 router.get("/student/profile", studentProfile.viewAll);
 // router.post('/student/profile/:id', studentProfile.updateStudent);
 

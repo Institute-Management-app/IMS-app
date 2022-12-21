@@ -23,7 +23,7 @@ module.exports.registerUser = function (req, res) {
     db.Student.create({
       user_id: result.dataValues.user_id,
       branch: req.body.branch,
-      semester: req.body.semester,
+      semester: "1",
     }).then((response) => {
       db.LoginCredentials.create({
         email: req.body.email,
