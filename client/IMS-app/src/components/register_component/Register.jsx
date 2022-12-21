@@ -39,7 +39,7 @@ function Register() {
             address: Yup.string().required("Address is required"),
             occupation: Yup.string().required("Occupation is required"),
             relationship: Yup.string().required("Relationship is required"),
-            pemail: Yup.string().required("Parent email is required"),
+            pemail: Yup.string().email().required("Parent email is required"),
             ppassword: Yup.string().required("Parent  password  is required"),
             pphone: Yup.string().required("Parent phone is required"),
             branch: Yup.string().required("Branch is required"),
@@ -53,7 +53,6 @@ function Register() {
             }
 
             alert("register Success");
-            // localStorage.setItem('token', result.data);
           }}
         >
           {({ isSubmitting }) => (
