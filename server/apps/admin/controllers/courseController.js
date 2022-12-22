@@ -21,7 +21,8 @@ module.exports.create = async (req, res) => {
 module.exports.getAll = async (req, res) => {
   try {
     const course = await Course.findAll();
-    res.json(course);
+    console.log(course)
+    res.json(new ResponseModel(course));
   } catch (error) {
     res
       .status(500)

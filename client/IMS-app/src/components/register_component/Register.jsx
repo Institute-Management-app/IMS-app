@@ -26,7 +26,7 @@ function Register() {
             pemail: "",
             ppassword: "",
             pphone: "",
-            branch: "",
+            
           }}
           validationSchema={Yup.object().shape({
             email: Yup.string().email().required("Email is required"),
@@ -42,7 +42,7 @@ function Register() {
             pemail: Yup.string().email().required("Parent email is required"),
             ppassword: Yup.string().required("Parent  password  is required"),
             pphone: Yup.string().required("Parent phone is required"),
-            branch: Yup.string().required("Branch is required"),
+            
           })}
           onSubmit={async (values, { setSubmitting }) => {
             var service = new accountsService();
@@ -139,22 +139,7 @@ function Register() {
                   className="text-danger"
                 />
               </div>
-              <div className="mb-3">
-                <label htmlFor="branch" className="form-label">
-                  Branch
-                </label>
-                <Field
-                  type="text"
-                  className="form-control"
-                  name="branch"
-                  id="branch"
-                />
-                <ErrorMessage
-                  name="branch"
-                  component="div"
-                  className="text-danger"
-                />
-              </div>
+              
               <div className="mb-3">
                 <label htmlFor="password" className="form-label">
                   Password

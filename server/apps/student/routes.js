@@ -12,5 +12,6 @@ router.delete('/feedback/:id', feedback.delete);
 router.post('/profile/update', profile.changePassword);
 router.get('/profile', profile.getProfile);
 router.get('/marks', profile.getMarks);
+router.post('/apply', profile.applyCourse);
 
 module.exports = router;

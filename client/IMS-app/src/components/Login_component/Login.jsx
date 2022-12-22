@@ -35,10 +35,10 @@ const Login = () => {
               window.location.href = "/admin/user/create";
               break;
             case "S":
-              window.location.href = "/student/profile";
+              window.location.href = "admin/student/profile";
               break;
             default:
-              window.location.href = "/";
+              window.location.href = "/parent/profile";
               break;
           }
         }}

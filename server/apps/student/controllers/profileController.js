@@ -3,6 +3,7 @@ const {
   Student,
   Mark,
   LoginCredentials,
+  Course
 } = require("../../../model/models");
 const ResponseModel = require("../../../utilities/responseModel");
 
@@ -21,7 +22,7 @@ module.exports.getProfile = async (req, res) => {
       .json(new ResponseModel(null, null, ["User not found"]));
   }
 
-  res.json(new ResponseModel(user));
+  res.json(new ResponseModel([user]));
 };
 
 module.exports.getMarks = async (req, res) => {
@@ -60,3 +61,18 @@ module.exports.changePassword = async (req, res) => {
     res.status(500).json(new ResponseModel(null, null, ["Student not found"]));
   }
 };
+module.exports.applyCourse = async (req, res) => {
+   const {branch} = req.body;
+   try {
+    const course = await Course.findAll({
+      where: {
+        branch: branch
+      }
+    })
+    res.json(new ResponseModel(course));
+
+   }
+   catch (error) {
+    res.status(500).json(new ResponseModel(null, null, [" No data found"]));
+  }
+}

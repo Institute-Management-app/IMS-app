@@ -21,7 +21,7 @@ module.exports.getProfile = async (req, res) => {
       .json(new ResponseModel(null, null, ["User not found"]));
   }
 
-  res.json(new ResponseModel(user));
+  res.json(new ResponseModel([user]));
 };
 
 module.exports.getMarks = async (req, res) => {
