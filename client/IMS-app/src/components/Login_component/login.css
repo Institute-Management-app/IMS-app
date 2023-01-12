@@ -1,0 +1,31 @@
+.contain{
+    background-image: url('./images/log.jpg');
+    background-position: center ;
+    background-size:100%;
+    background-repeat:no-repeat ;
+    margin: 0px;
+    width: 100vw;
+    height: 100vh;
+}
+.cont{
+    width: 100vw;
+    height: 100vh;
+    padding-top:200px ;
+    z-index: -1;
+    background-color: rgb(25 20 22 / 25%);
+} 
+.childcontainer1{
+    height: 400px;
+    width:400px;
+    margin: 0px 0px 0px 200px;
+    padding: 30px;
+    padding-top: 60px;
+    border-radius: 5px;
+    z-index: -1;
+    background-color: rgb(25 20 22 / 65%);
+
+}
+.form-label{
+    color: white;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+} 

@@ -1,0 +1,153 @@
+
+  
+  .container8{
+    background-color: #282c34;
+    min-height: 20vh;
+    min-width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left:6vw ;
+    padding-right: 8vw;
+    padding-bottom: 1vh;
+    font-size: calc(10px + 2vmin);
+    color: white;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+  }
+  
+  .nav1{
+    font-weight: bolder;
+    margin-left: 4vw;
+      font-family: "Trebuchet MS", Helvetica, sans-serif;
+      
+  }
+  .nav{
+    min-width: 100vw;
+  }
+  
+  #gq{
+    color: white;
+   }
+  
+  nav{
+    z-index: 999;
+  }
+  .caro{
+    min-height: 50vh;
+    min-width: 100vw;
+    display:flex; 
+   position: relative;
+   bottom: 4em;
+  }
+  .box{
+    width: 100vw;
+    height: 65vh;
+   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* .inerbox {
+    display: flex;
+    flex-direction: row;
+    background-color: beige;
+    max-height: 350px;
+    min-width:1300px;
+    padding: 10px;
+  } */
+  
+  .cards{
+     
+    height: 700px;
+    min-width: 100vw;
+    border: none ;
+    background-image: url('./images/col.jpg');
+    background-position: center ;
+    background-size:100%;
+    background-repeat:no-repeat ;
+  }
+  .shade{
+    height: 700px;
+    min-width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly; 
+    align-items: center;
+    z-index: -1;
+    background-color: rgb(25 20 22 / 35%);
+  }
+  
+  .card {
+    display: flex;
+    flex-direction: column;
+    
+    width:300px;
+  }
+  .placement{
+    width: 100vw;
+    height: 70vh;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+  }
+  .place{
+   
+    height: 450px;
+    width:1300px;
+    border-radius: 15px;
+    border: none;
+  }
+  .image{
+    height: 450px;
+    width:1300px;
+    background-image: url('./images/place1.jpg');
+    background-position: center ;
+    background-size:100%;
+    background-repeat:no-repeat ;
+  }
+  .center{
+    padding-top: 100px;
+    text-align: center;
+  }
+  .admision{
+    width: 100vw;
+    height: 70vh;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .ad{
+    height: 450px;
+    width:1300px;
+    border-radius: 10px;
+    border: none;
+    background-color:#f1f1f1;
+  }
+  
+  .bottle{
+    height: 50vh;
+    min-width:100vw ;
+    background-color: rgb(240, 240, 240);
+    padding-top: 20px;
+    padding-left: 1vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .container1{
+    width: 350px;
+    height: 200px;
+    /* background-color: blue; */
+    /* text-align: center; */
+  }
+  .row{
+    width: 100px;
+    height: 100px;
+    background-color: yellow;
+  }

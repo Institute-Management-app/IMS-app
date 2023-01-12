@@ -1,0 +1,12 @@
+.container3{
+    height: 400px;
+    width:650px;
+    margin: 200px 0px 0px 450px;
+    padding: 30px;
+    padding-top: 60px;
+    border-radius: 5px;
+    z-index: -1;
+    background-color: rgb(25 20 22 / 55%);
+    color:white;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+}

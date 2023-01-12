@@ -1,0 +1,15 @@
+.page {
+  width: 30vw;
+  margin-left: 33%;
+}
+
+.maindiv {
+  background-color: white;
+  width: 650px;
+  display: flex;
+  margin-left: 300px;
+  border-radius: 20%;
+}
+.form-label {
+  color: black;
+}
