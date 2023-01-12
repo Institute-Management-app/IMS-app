@@ -25,6 +25,18 @@ import axios from "./axios.js";
     const response = await axios.get("/admin/feedback");
     return response.data;
   }
-  export {viewAll,getAll,courseGetAll,feedback,oneStudent,oneParent} 
+  const getMarks = async ()=> {
+    const response = await axios.get("/student/marks");
+    return response.data;
+  }
+  const viewMark = async ()=> {
+    const response = await axios.get("/parent/marks");
+    return response.data;
+  }
+  const adminMark = async ()=> {
+    const response = await axios.get("/admin/marks");
+    return response.data;
+  }
+  export {viewAll,getAll,courseGetAll,feedback,oneStudent,oneParent,getMarks,viewMark,adminMark} 
 
 

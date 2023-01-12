@@ -3,17 +3,8 @@ const ResponseModel = require("../../../utilities/responseModel");
 
 module.exports.registerUser = function (req, res) {
   const pemail = req.body.pemail;
-
-  // db.LoginCredentials.findOne({ where: { email: pemail } }).then(
-  //   (userExists) => {
-  //     if (userExists) {
-  //       return res
-  //         .status(400)
-  //         .json(new ResponseModel(null, null, ["User already exists."]));
-  //     }
-  //   }
-  // );
-
+  let branch = "CSE"
+// console.log(req.body);
   db.User.create({
     name: req.body.name,
     dob: req.body.dob,
@@ -22,7 +13,7 @@ module.exports.registerUser = function (req, res) {
   }).then((result) => {
     db.Student.create({
       user_id: result.dataValues.user_id,
-      branch: req.body.branch,
+      branch: branch,
       semester: "1",
     }).then((response) => {
       db.LoginCredentials.create({

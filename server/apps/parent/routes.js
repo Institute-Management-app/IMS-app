@@ -4,7 +4,7 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/profile", parentProfile.getProfile);
-router.get("/marks/:id", parentProfile.getMarks);
+router.get("/marks", parentProfile.getMarks);
 
 router.post("/profile/update", parentProfile.changePassword);
 

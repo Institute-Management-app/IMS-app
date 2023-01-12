@@ -14,7 +14,6 @@ module.exports = async (req, res, next) => {
     req.token = token;
 
     const url = req.url;
-    console.log(url);
     for (let i = 0; i < allowedUrls.length; i++) {
         if (url.startsWith(allowedUrls[i])) {
             return next();
@@ -29,4 +28,4 @@ module.exports = async (req, res, next) => {
     } catch (error) {
         res.status(401).json(new ResponseModel(null, null, ["Unauthorized"]));
     }
-}
+} 

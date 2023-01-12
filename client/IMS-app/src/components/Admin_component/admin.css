@@ -1,0 +1,12 @@
+.navbar-brand{
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+
+}
+.box5{
+    width: 100vw;
+    height: 65vh;
+   margin-top: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

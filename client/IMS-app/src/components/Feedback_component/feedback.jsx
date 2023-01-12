@@ -2,11 +2,11 @@ import React from "react";
 import { Field, Formik, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import feedbackService from "../../services/feedbackService";
-import jwt_decode from "jwt-decode";
+import './feedback.css'
 
 const Feedback = () => {
     return (
-        <div className="container">
+        <div className="container3">
             <Formik
                 initialValues={{
                     content: ""
@@ -46,6 +46,7 @@ const Feedback = () => {
                                 type="submit"
                                 disabled={isSubmitting}
                                 className="btn btn-primary"
+                                style={{marginLeft:'240px', marginTop:'20px',fontFamily:'Trebuchet MS, Helvetica, sans-serif'}}
                             >
                                 Send
                             </button>

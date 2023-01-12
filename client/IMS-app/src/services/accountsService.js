@@ -9,14 +9,16 @@ export default class accountsService {
     console.log(response.data);
     return response.data;
   }
-
+  
   async register(data) {
+    console.log(this.baseurl);
     const response = await axios.post(
-      this.baseUrl + "/admin/user/create",
+      "/admin/user/register",
       data
     );
     console.log("8888888888888888888888");
     console.log(response.data);
     return response.data;
   }
+
 }

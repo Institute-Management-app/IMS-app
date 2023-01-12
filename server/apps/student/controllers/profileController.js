@@ -37,6 +37,7 @@ module.exports.getMarks = async (req, res) => {
     where: {
       user_id: user.user_id,
     },
+    include: Course
   });
 
   res.json(new ResponseModel(marks));
@@ -62,15 +63,21 @@ module.exports.changePassword = async (req, res) => {
   }
 };
 module.exports.applyCourse = async (req, res) => {
+  const user_id = req.user.id
    const {branch} = req.body;
    try {
-    const course = await Course.findAll({
+    const student = await Student.findOne({
       where: {
-        branch: branch
+        user_id: user_id
+        
       }
     })
-    res.json(new ResponseModel(course));
-
+    if(student){
+      student.branch = branch;
+      await student.save();
+      res.json(new ResponseModel(student)); 
+    }
+     
    }
    catch (error) {
     res.status(500).json(new ResponseModel(null, null, [" No data found"]));

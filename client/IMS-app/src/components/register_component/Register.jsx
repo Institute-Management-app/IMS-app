@@ -1,10 +1,10 @@
 import { Field, Formik, Form, ErrorMessage } from "formik";
 import React from "react";
+import {Link, Outlet } from "react-router-dom";
 import * as Yup from "yup";
 import accountsService from "../../services/accountsService";
 import "./register.css";
 
-// import styles from './Register.module.css'
 function Register() {
   return (
     <div className="maindiv">
@@ -44,9 +44,9 @@ function Register() {
             pphone: Yup.string().required("Parent phone is required"),
             
           })}
-          onSubmit={async (values, { setSubmitting }) => {
+          onSubmit={ (values, { setSubmitting }) => {
             var service = new accountsService();
-            var result = await service.register(values);
+            var result =  service.register(values);
             if (!result.success) {
               alert(result.errors[0]);
               return;
@@ -57,8 +57,8 @@ function Register() {
         >
           {({ isSubmitting }) => (
             <Form>
-              <div className="mb-3">
-                <label htmlFor="name" className="form-label">
+              <div className="mb-3" >
+                <label htmlFor="name" className="form-label" >
                   Name
                 </label>
                 <Field
@@ -71,7 +71,7 @@ function Register() {
                 />
               </div>
               <div className="mb-3">
-                <label htmlFor="email" className="form-label">
+                <label htmlFor="email" className="form-label" >
                   Email
                 </label>
                 <Field
@@ -89,7 +89,7 @@ function Register() {
                 />
               </div>
               <div className="mb-1 ">
-                <label htmlFor="phone" className="form-label">
+                <label htmlFor="phone" className="form-label" >
                   Phone No.
                 </label>
                 <Field
@@ -300,9 +300,9 @@ function Register() {
                 </div>
               </div>
 
-              <button
+              <button 
                 type="submit"
-                disabled={isSubmitting}
+                // disabled={isSubmitting}
                 className="btn btn-primary"
               >
                 Submit
@@ -311,6 +311,7 @@ function Register() {
           )}
         </Formik>
       </div>
+      <Outlet />
     </div>
   );
 }

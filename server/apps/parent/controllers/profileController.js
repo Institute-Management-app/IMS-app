@@ -3,6 +3,7 @@ const {
   Parent,
   Mark,
   LoginCredentials,
+  Course
 } = require("../../../model/models");
 const ResponseModel = require("../../../utilities/responseModel");
 
@@ -25,20 +26,20 @@ module.exports.getProfile = async (req, res) => {
 };
 
 module.exports.getMarks = async (req, res) => {
-  const user_id = req.params.id;
-  const user = await User.findOne({
+  const user_id = req.user.id
+  const student = await User.findOne({
     where: {
-      user_id: user_id,
+      relation: req.user.id,
     },
+    include: {
+      model:Mark,
+      include: {
+        model:Course
+      }
+    }
   });
 
-  const marks = await Mark.findAll({
-    where: {
-      user_id: user.user_id,
-    },
-  });
-
-  res.json(new ResponseModel(marks));
+  res.json(new ResponseModel([student]));
 };
 
 module.exports.changePassword = async (req, res) => {

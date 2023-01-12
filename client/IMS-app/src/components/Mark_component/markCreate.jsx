@@ -3,10 +3,11 @@ import { Field, Formik, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import markService from "../../services/markService";
 import jwt_decode from "jwt-decode";
+import './mark.css'
 
 const markAdd = () => {
   return (
-    <div className="container">
+    <div className="c">
       <Formik
         initialValues={{
           user_id: "",

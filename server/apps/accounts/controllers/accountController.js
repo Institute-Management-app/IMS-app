@@ -1,4 +1,3 @@
-const e = require("express");
 const { LoginCredentials, User } = require("../../../model/models.js");
 const ResponseModel = require("../../../utilities/responseModel");
 const tokenHandler = require("../../../utilities/tokenHandler");
@@ -44,16 +43,6 @@ module.exports.login = function (req, res) {
 
 // Register user
 module.exports.createAdmin = async (req, res) => {
-  // Check if user already exists
-  // var user = await User.findOne({
-  //     where: {
-  //         role: 'A'
-  //     }
-  // });
-
-  // if (user) {
-  //     return res.json(new ResponseModel(null, "Admin already exists", ["Admin already exists"]));
-  // }
 
   // Create user
   var user = await User.create({

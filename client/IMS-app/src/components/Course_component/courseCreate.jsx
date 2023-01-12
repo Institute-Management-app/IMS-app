@@ -2,11 +2,11 @@ import React from "react";
 import { Field, Formik, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import courseService from "../../services/courseService";
-import jwt_decode from "jwt-decode";
+import "./courseCreate.css"
 
 const CourseCreate = () => {
   return (
-    <div className="container">
+    <div className="childcontainer">
       <Formik
         initialValues={{
           course_name: "",

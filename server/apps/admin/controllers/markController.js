@@ -1,4 +1,6 @@
-const { Mark } = require("../../../model/models");
+const { Model } = require("sequelize");
+
+const { Mark,LoginCredentials,Student,User, Course} = require("../../../model/models");
 const ResponseModel = require("../../../utilities/responseModel");
 
 module.exports.create = async (req, res) => {
@@ -18,74 +20,36 @@ module.exports.create = async (req, res) => {
 };
 
 module.exports.getAll = async (req, res) => {
-  const user_id = req.params.id;
-  try {
-    const marks = await Mark.findAll({
+  
+  // try {
+    const student = await LoginCredentials.findAll({
       where: {
-        user_id,
+        role:'S'
       },
-    });
-    res.json(new ResponseModel(marks));
-  } catch (error) {
-    res
-      .status(500)
-      .json(new ResponseModel(null, null, ["Unable to fetch data"]));
-  }
+      attributes : [],
+      include: {
+        model: User,
+        required: true,
+        attributes: ['name'],
+        include :[{
+          model : Student,
+          required: true,
+          attributes : ['branch']
+        },
+      {
+        model : Mark,
+        required: true,
+        attributes : ['mark'],
+        include :[{
+          model : Course,
+          required: true,
+          attributes : ['course_id','course_name']
+        }]
+      }]
+      }
+ 
+    });   
+
+    res.json(new ResponseModel(student));
 };
 
-module.exports.getOne = async (req, res) => {
-  const id = req.params.id;
-  try {
-    const mark = await Mark.findByPk(id);
-    if (!mark) {
-      return res
-        .status(404)
-        .json(new ResponseModel(null, null, ["Mark not found"]));
-    }
-    res.json(new ResponseModel(mark));
-  } catch (error) {
-    res
-      .status(500)
-      .json(new ResponseModel(null, null, ["Unable to fetch data"]));
-  }
-};
-
-module.exports.update = async (req, res) => {
-  console.log("111");
-  const id = req.params.id;
-  const { mark } = req.body;
-  try {
-    const marks = await Mark.findByPk(id);
-    if (!marks) {
-      return res
-        .status(404)
-        .json(new ResponseModel(null, null, ["Mark not found"]));
-    }
-
-    marks.mark = mark;
-    await marks.save();
-    res.json(new ResponseModel(marks));
-  } catch (error) {
-    res
-      .status(500)
-      .json(new ResponseModel(null, null, ["Unable to update data"]));
-  }
-};
-
-module.exports.delete = async (req, res) => {
-  const id = req.params.id;
-  try {
-    const mark = await Mark.findByPk(id);
-    if (!mark) {
-      return res
-        .status(404)
-        .json(new ResponseModel(null, null, ["Mark not found"]));
-    }
-    await mark.destroy();
-    res.json(new ResponseModel(null, null, ["Deleted successfully"]));
-  } catch (error) {
-    res
-      .status(500)
-      .json(new ResponseModel(null, null, ["Unable to delete data"]));
-  }
-};

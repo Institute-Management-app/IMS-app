@@ -5,11 +5,10 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./components/Login_component/Login";
-import Register from "./components/register_component/Register";
+import Register from "./components/Register_component/Register";
 import Course from "./components/Course_component/courseCreate";
 import Apply from "./components/Course_component/applyCourse";
 import Feedback from "./components/Feedback_component/feedback";
-import Dashboard from "./components/Dashbord/sidebar";
 import Student from "./components/Table_component/getAllStudentProfile";
 import Parent from "./components/Table_component/getAllParentProfile";
 import Mark from "./components/Mark_component/markCreate";
@@ -19,11 +18,19 @@ import  SPassword from "./components/Password/studentPassword";
 import  PPassword from "./components/Password/parentPassword";
 import  OneStudent from "./components/Table_component/getStudentProfile";
 import  OneParent from "./components/Table_component/getParentProfile";
+import  GetMark from "./components/Table_component/getMark";
+import  MarkView from "./components/Table_component/parentMark";
+import  Home from "./components/Home_component/home";
+import  Admin from "./components/Admin_component/admin";
+import  StudentOne from "./components/Student_component/student";
+import  ParentOne from "./components/Parent_component/parent";
+import  AdminMark from "./components/Table_component/adminMark";
 
 const router = createBrowserRouter([
   {
+    
     path: "/accounts",
-    element: <App />,
+  
     children: [
       {
         path: "/accounts/login",
@@ -32,16 +39,21 @@ const router = createBrowserRouter([
     ],
   },
   {
+    path: "/",
+    element: <Home />,
+
+  },
+  {
     path: "/admin",
-    element: <App />,
+    element: <Admin />,
     
     children: [
       {
-        path: "/admin/user/create",
-        element: <Register />,
+        path: "/admin/user/register",
+        element: <Register/>,
       },
       {
-        path: "/admin/course/create",
+        path: "/admin/course/create", 
         element: <Course />
       },
       {
@@ -64,6 +76,10 @@ const router = createBrowserRouter([
         path: "/admin/feedback",
         element: <GetFeedback />
       },
+      {
+        path: "/admin/marks",
+        element: < AdminMark/>
+      }
 
 
     ],
@@ -71,7 +87,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/student",
-    element: <App />,
+    element: <StudentOne />,
     children: [
       {
         path: "/student/apply",
@@ -88,12 +104,16 @@ const router = createBrowserRouter([
       {
         path: "/student/profile",
         element: <OneStudent />,
+      },
+      {
+        path: "/student/marks",
+        element: <GetMark />,
       }
     ]
   },
   {
     path: "/parent",
-    element: <App />,
+    element: <ParentOne />,
     children: [
 
       {
@@ -107,6 +127,10 @@ const router = createBrowserRouter([
       {
         path: "/parent/profile/update",
         element: <PPassword />,
+      },
+      {
+        path: "/parent/marks",
+        element: <MarkView />,
       }
     ]
   }

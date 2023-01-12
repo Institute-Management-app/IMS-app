@@ -29,7 +29,7 @@ function GetFeedback() {
             <table className='table table-striped'>
                 <thead>
                     <tr>
-                        <th>Student ID</th>
+                        <th>User ID</th>
                         <th>Name</th>
                         <th>Feedback</th>
                         
